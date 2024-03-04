@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./index.css">
+<title>Calculator</title>
+
+</head>
+<body>
+<div class="container">
+    
+       
+        <div class="calculator">
+            <input type="text" placeholder="0" readonly>
+           <center>
+                <button class="btn" onClick="clearLast()">C</button>
+                <button class="btn" onClick="clearAll()">AC</button>
+                <button class="btn" id="equal" onClick="calculateResult()">=</button>
+                <button class="btn" onClick="calculate('+')">+</button>
+                <button class="btn" onClick="calculate('1')">1</button>
+                <button class="btn" onClick="calculate('2')">2</button>
+                <button class="btn" onClick="calculate('3')">3</button>
+                <button class="btn" onClick="calculate('-')">-</button>
+                 <button class="btn" onClick="calculate('4')">4</button>
+                <button class="btn" onClick="calculate('5')">5</button>
+                <button class="btn" onClick="calculate('6')">6</button>
+                <button class="btn" onClick="calculate('*')">*</button>
+                <button class="btn" onClick="calculate('7')">7</button>
+                <button class="btn" onClick="calculate('8')">8</button>
+                <button class="btn" onClick="calculate('9')">9</button>
+                <button class="btn" onClick="calculate('/')">/</button>
+                <button class="btn" onClick="calculate('0')">0</button>
+           </center>
+        </div>
+</div>
+
+
+<script>
+    function calculate(value) {
+        document.querySelector('input').value += value;
+    }
+
+    function clearLast() {
+        let currentValue = document.querySelector('input').value;
+        document.querySelector('input').value = currentValue.slice(0, -1);
+    }
+
+    function clearAll() {
+        document.querySelector('input').value = '';
+    }
+
+    function calculateResult() {
+        let expression = document.querySelector('input').value;
+        try {
+            let result = eval(expression);
+            document.querySelector('input').value = result;
+        } catch (error) {
+            document.querySelector('input').value = 'Error';
+        }
+    }
+</script>
+</body>
+</html>
